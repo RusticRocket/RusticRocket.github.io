@@ -1,7 +1,14 @@
+html {
+  min-height: 100%;
+  min-width: 100%;
+  height: 200%;
+}
+
 body {
   background: rgb(142,202,230);
-  background: linear-gradient(180deg, rgba(142,202,230,1) 0%, rgba(33,158,188,1) 50%, rgba(2,48,71,1) 100%, rgba(42,190,175,1) 023047%);
+  background-image: linear-gradient(180deg, rgba(142,202,230,1) , rgba(33,158,188,1) , rgba(2,48,71,1));
 }
+
 
 @font-face {
   font-family: MainFont;
@@ -13,6 +20,39 @@ h1 {
   font-family: MainFont;
   font-size: 128px;
   text-align: center;
+  text-stroke: 3px black;
+}
 
-  
+iframe {
+  left: 50%;
+  top: 50%;
+  align-items: center;
+  display: block;
+  border-style: none;
+  width:50%;
+  height:500px;
+  transform: translate(50%, 50%);
+}
+
+.nav{
+    border:0px solid #ccc;
+    border-width:0px 0;
+    font-family: MainFont;
+    list-style:none;
+    margin:0;
+    padding:0;
+    text-align:center;
+}
+.nav li{
+    display:inline;
+    font-family: MainFont;
+    text-align:center;
+}
+.nav a{
+  font-size: 48px;
+    color: White;
+    font-family: MainFont;
+    display:inline-block;
+    text-align:center;
+    padding:10px;
 }
