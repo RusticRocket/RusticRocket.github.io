@@ -4,7 +4,7 @@ let aspect = 4;
 let width = 6;
 let height = width / aspect;
 
-const camera = new THREE.OrthographicCamera(width / - 2, width / 2, height / 2, height / - 2, 0.1, 100);
+const camera = new THREE.PerspectiveCamera(7, width / height,5,1000);
 const scene = new THREE.Scene();
 
 var Mesh;
@@ -25,6 +25,8 @@ function init() {
 
 function setLight() {
     const light = new THREE.AmbientLight(0xFFFFFF,1); // soft white light
+    light.position.set( 0, 5, 0 ); //default; light shining from top
+    light.castShadow = true;
     scene.add(light);
 }
 
@@ -34,8 +36,10 @@ function loadText() {
     balloonLoader.load('./model/sightseekertext.gltf', (gltf) => {
         Mesh = gltf.scene;
         scene.add(Mesh);
-        Mesh.position.set(0, 0, -10);
+        Mesh.position.set(0.2, 0.2, -10);
         textscale = 0.75
+        Mesh.castShadow = true;
+        Mesh.recieveShadow = true;
         Mesh.scale.set(textscale, textscale, textscale);
     });
 }
@@ -51,7 +55,7 @@ function animate() {
         rotlerpX = lerp(rotlerpX, rotX, 0.1);
         rotlerpY = lerp(rotlerpY, rotY, 0.1);
         //0.25 default
-        var rotmult = 0.25
+        var rotmult = 0.125
         Mesh.children[0].rotation.y = -rotlerpX * 3.1415 * rotmult;
         Mesh.children[0].rotation.x = -rotlerpY * 3.1415 * rotmult;
     }
